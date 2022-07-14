@@ -1,38 +1,231 @@
-.App {
-  text-align: center;
+* {
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+    width: 100%;
+    height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+    text-align: center;
+    /* color: rgb(219, 90, 90); */
+    color: #d3a625;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        #740001 27%,
+        #1a472a 27%,
+        #1a472a 50%,
+        #222f5b 50%,
+        #222f5b 73%,
+        #ecb939 73%
+    );
+    /* background: linear-gradient(135deg, #38417c, #a75567); */
+    /* background: linear-gradient(-45deg, #dac57b, rgb(252, 254, 231)); */
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    word-spacing: normal;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#root {
+    width: 100%;
+    height: 100%;
+}
+.app {
+    width: 100%;
+    height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+    padding: 30px 0;
+    margin: 0;
+    font-size: 35px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container {
+    width: 90%;
+    max-width: 750px;
+    height: 100%;
+    margin: auto;
+}
+
+.section {
+    padding: 8px;
+    /* background: linear-gradient(180deg, #f79a93, #fee68f); */
+    /* background: linear-gradient(180deg, #38417c, #a75567); */
+    background-color: rgba(30, 30, 30, 1);
+    border: 10px solid #946b2d;
+    /* min-height: 525px; */
+    max-height: 80%;
+}
+
+.question-section,
+.score-section {
+    border: 4px solid #946b2d;
+    background-color: rgba(30, 30, 30, 1);
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.question-count-wrap {
+    text-align: left;
+    font-size: 22px;
+    background-color: #946b2d;
+    clip-path: polygon(0 0, 100% 0%, 100% 75%, 50% 100%, 0 75%);
+    width: 100px;
+    height: 80px;
+    position: absolute;
+    top: -1px;
+    left: 20px;
+}
+
+.question-count {
+    width: 100%;
+    color: #aaa;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.question-count > span {
+    font-size: 18px;
+}
+
+.question-count > p {
+    margin-top: 8px;
+    font-size: 18px;
+}
+
+.flex-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.question-title {
+    margin: 5% auto 3%;
+    width: 70%;
+}
+
+.question-title > h3 {
+    color: #dbdbdb;
+    font-size: 22px;
+    font-weight: normal;
+    word-spacing: 2px;
+    /* 為什麼 inline 的也沒有作用 */
+}
+
+.option-wrap {
+    padding: 10px 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.optionBtn {
+    width: 70%;
+    display: block;
+    padding: 10px;
+    border: 4px solid #2c251a;
+    background-color: #ecb93981;
+    font-size: 18px;
+    font-weight: 600;
+    color: #373429;
+    transition: 0.3s;
+    clip-path: polygon(5% 2%, 98% 2%, 95% 98%, 2% 98%);
+}
+
+.optionBtn:hover {
+    border: 4px solid #ecb939;
+    background-color: #d3a625;
+}
+
+.optionBtn.selected,
+.optionBtn:focus {
+    border: 4px solid #ecb939;
+    background-color: #222f5b;
+    color: #ecb939;
+}
+
+.nextBtnWrap {
+    width: 90%;
+    padding: 10px 0 5px;
+    margin: 5% auto 2%;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.prevBtn,
+.nextBtn {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #1a472a;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    margin: 0 10px;
+    color: #2a623d;
+    font-size: 20px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.prevBtn:hover,
+.nextBtn:hover,
+.prevBtn:focus,
+.nextBtn:focus {
+    background-color: #1a472a;
+    color: #aaaaaa;
+}
+
+footer {
+    padding: 5px 0 0;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* score-section */
+
+.score-section {
+    position: relative;
+}
+.replayBtn {
+    width: 30%;
+    display: block;
+    padding: 15px;
+    border: 4px solid #740001;
+    background-color: #740001;
+    font-size: 18px;
+    font-weight: 600;
+    color: #bebebe;
+    transition: 0.3s;
+    clip-path: polygon(5% 0%, 85% 0%, 95% 50%, 85% 100%, 5% 100%);
+    position: absolute;
+    left: 8px;
+    bottom: 15px;
+    transition: 0.3s;
+    opacity: 1;
+}
+
+.replayBtn:hover {
+    opacity: 0.8;
+    color: #d3a625;
+}
+
+.replayBtn.run {
+    animation: replayRun 0.6s forwards;
+}
+
+@keyframes replayRun {
+    to {
+        left: 70%;
+        background-color: #0e1a40;
+        border: 4px solid #0e1a40;
+        color: #d3a625;
+    }
 }
