@@ -1,4 +1,3 @@
-import questions from "../../data/questions";
 import OptionWrap from "./OptionWrap";
 
 import { useState } from "react";
@@ -9,7 +8,7 @@ function QuestionSection(props) {
     // 選到哪一題的哪一個答案
     const [selectedOpt, setSelectedOpt] = useState({ Q: 0, opt: -1 });
 
-    const { score, setScore, setShowScore } = props;
+    const { score, setScore, setShowScore, questionArr } = props;
 
     return (
         <>
@@ -19,14 +18,14 @@ function QuestionSection(props) {
                         <div className="question-count">
                             <span>Question</span>
                             <p>
-                                {currentQuestion + 1} / {questions.length}
+                                {currentQuestion + 1} / {questionArr.length}
                             </p>
                         </div>
                     </div>
                     <div className="flex-wrap">
                         <div className="question-title" key={currentQuestion}>
                             <h3 style={{ wordSpacing: "2px" }}>
-                                {questions[currentQuestion].question} ?
+                                {questionArr[currentQuestion].question} ?
                             </h3>
                         </div>
                         {/* 選項 render */}
@@ -34,6 +33,7 @@ function QuestionSection(props) {
                             currentQuestion={currentQuestion}
                             selectedOpt={selectedOpt}
                             setSelectedOpt={setSelectedOpt}
+                            questionArr={questionArr}
                         />
 
                         {/* 下一頁按鈕 */}
@@ -50,14 +50,14 @@ function QuestionSection(props) {
                                     ) {
                                         // 算分數
                                         if (
-                                            questions[currentQuestion].ans ===
+                                            questionArr[currentQuestion].ans ===
                                             selectedOpt.opt
                                         ) {
                                             setScore(score + 1);
                                         }
-                                        console.log(selectedOpt);
+                                        // console.log(selectedOpt);
 
-                                        if (nextQuestion < questions.length) {
+                                        if (nextQuestion < questionArr.length) {
                                             setCurrentQuestion(nextQuestion);
                                         } else {
                                             setShowScore(true);

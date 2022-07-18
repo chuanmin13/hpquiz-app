@@ -1,12 +1,10 @@
-import questions from "../../data/questions";
-
 function OptionWrap(props) {
-    const { currentQuestion, selectedOpt, setSelectedOpt } = props;
+    const { currentQuestion, selectedOpt, setSelectedOpt, questionArr } = props;
 
     return (
         <>
             <div className="option-wrap">
-                {questions[currentQuestion].options.map((o, i) => (
+                {questionArr[currentQuestion].options.map((o, i) => (
                     <button
                         key={i}
                         onClick={() => {

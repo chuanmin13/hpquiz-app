@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 import questions from "./data/questions";
@@ -14,23 +14,30 @@ function App() {
     const [showScore, setShowScore] = useState(false);
 
     // 總題數
-    const qLength = questions.length;
+    // const qLength = questions.length;
+    const qLength = 8;
+    let questionArr;
 
-    // 上一題按鈕
-    // const handlePrevBtn = (ansOption) => {
-    //     const nextQuestion = currentQuestion - 1;
-    //     if (nextQuestion >= 0) {
-    //         setCurrentQuestion(nextQuestion);
-    //     }
-    // };
+    // 隨機選題目
+    // TODO: 沒辦法固定這八題~~~
+    function nowQuestions() {
+        const ranNum = [];
+        const newQuestions = [];
+        const q = questions.map((v) => {
+            return v;
+        });
 
-    // 對答案
-    // const handleAnsOptionClick = (isCorrect, i) => {
-    //     if (isCorrect) {
-    //         const newScore = score + 1;
-    //         setScore(newScore);
-    //     }
-    // };
+        while (newQuestions.length < 8) {
+            const ran = Math.floor(Math.random() * 25);
+            if (!ranNum.includes(ran)) {
+                ranNum.push(ran);
+                newQuestions.push(q[ran]);
+            }
+        }
+        console.log(ranNum);
+        questionArr = newQuestions;
+    }
+    nowQuestions();
 
     return (
         <div className="app">
@@ -43,6 +50,7 @@ function App() {
                         score={score}
                         setScore={setScore}
                         setShowScore={setShowScore}
+                        questionArr={questionArr}
                     />
                 )}
                 <footer>made by &copy; chuanmin</footer>
