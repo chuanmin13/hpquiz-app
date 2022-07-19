@@ -5,6 +5,11 @@
 2. 計算答對題數，於遊戲結束時顯示
 3. 可以選擇重新開始遊戲
 
+**Harry Potter Quiz Game: **
+1. Randomly select 5 questions from question database
+2. Display score at the end of the game
+3. Able to play the game again
+
 #React #css
 
 <img src="https://github.com/chuanmin13/hpquiz-app/blob/master/public/hpQuiz.JPG?raw=true" width="500px" />
