@@ -36,7 +36,7 @@ const questions = [
         ans: 1,
     },
     {
-        question: "誰沒參加D.A在豬頭酒吧的首次聚會˙",
+        question: "誰沒參加D.A在豬頭酒吧的首次聚會",
         options: [
             { optText: "賈斯汀．方列里", isCorrect: false },
             { optText: "蘇珊．波恩", isCorrect: false },

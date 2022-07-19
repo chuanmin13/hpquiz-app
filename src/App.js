@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 import questions from "./data/questions";
@@ -12,32 +12,34 @@ function App() {
     const [score, setScore] = useState(0);
     // 最後分數呈現
     const [showScore, setShowScore] = useState(false);
+    // 現在在哪一題
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    // 選到哪一題的哪一個答案
+    const [selectedOpt, setSelectedOpt] = useState({ Q: 0, opt: -1 });
 
     // 總題數
     // const qLength = questions.length;
-    const qLength = 8;
-    let questionArr;
+    const qLength = 5;
+    const [questionArr, setQuestionArr] = useState([]);
 
     // 隨機選題目
-    // TODO: 沒辦法固定這八題~~~
-    function nowQuestions() {
-        const ranNum = [];
-        const newQuestions = [];
-        const q = questions.map((v) => {
-            return v;
+    function randomQuestions() {
+        // 從題庫取出5個亂數的題目index值
+        const numArr = questions.map((v, i) => {
+            return i;
         });
+        const ranNumArr = numArr
+            .sort(() => Math.random() - 0.5)
+            .slice(0, qLength);
 
-        while (newQuestions.length < 8) {
-            const ran = Math.floor(Math.random() * 25);
-            if (!ranNum.includes(ran)) {
-                ranNum.push(ran);
-                newQuestions.push(q[ran]);
-            }
-        }
-        console.log(ranNum);
-        questionArr = newQuestions;
+        // 用亂數index設定題目
+        const qArr = questions.filter((v, i) => {
+            return ranNumArr.includes(i);
+        });
+        setQuestionArr(qArr);
+        // console.log(qArr);
+        // console.log(questionArr[0].question);
     }
-    nowQuestions();
 
     return (
         <div className="app">
@@ -50,7 +52,12 @@ function App() {
                         score={score}
                         setScore={setScore}
                         setShowScore={setShowScore}
+                        currentQuestion={currentQuestion}
+                        setCurrentQuestion={setCurrentQuestion}
+                        selectedOpt={selectedOpt}
+                        setSelectedOpt={setSelectedOpt}
                         questionArr={questionArr}
+                        randomQuestions={randomQuestions}
                     />
                 )}
                 <footer>made by &copy; chuanmin</footer>
