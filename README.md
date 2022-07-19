@@ -14,7 +14,7 @@
 
 <img src="https://github.com/chuanmin13/hpquiz-app/blob/master/public/hpQuiz.JPG?raw=true" width="500px" />
 <img src="https://github.com/chuanmin13/hpquiz-app/blob/master/public/hpQuiz-2.JPG?raw=true" width="500px" />
-<img src="https://github.com/chuanmin13/hpquiz-app/blob/master/public/hpQuiz.JPG?raw=true" width="500px" />
+<img src="https://github.com/chuanmin13/hpquiz-app/blob/master/public/hpQuiz-3.JPG?raw=true" width="500px" />
 
 
 
